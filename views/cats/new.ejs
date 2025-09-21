@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Cat</title>
+</head>
+<body>
+    <h1>Add New Cat</h1>
+    <form action="/cats" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name">
+
+    <label for="breed">Cat Breed:</label>
+    <input type="text" name="breed" id="breed">
+
+    <label for="meow">Meow:</label>
+    <input type="text" name="meow" id="meow">
+
+    <label for="age">Age:</label>
+    <input type="number" name="age" id="age">
+
+    <div class="checkbox-div">
+    <label for="isCute">Is this cat cute?</label>
+    <input type="checkbox" name="isCute" id="isCute">
+    </div>
+    
+    <button type="submit">Create New Cat</button>
+    </form>
+    <a href="/cats/">Back to Cats</a>
+</body>
+</html>
