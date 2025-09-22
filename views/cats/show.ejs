@@ -6,6 +6,13 @@
     <title>Show Cat</title>
 </head>
 <body>
-    <h1>Show Cat</h1>
+    <h1><%=cat.name%></h1>
+    <p> <%= cat.name%> is <%=cat.age%> years old! her meow is <%= cat.meow %> </p>
+    <%if (cat.isCute){ %>
+        <p>it is very cute!!!</p>
+    <%} else { %>
+        <p>it is a bit ugly in a good way</p>
+    <% } %>
+    <a href="/cats/">Back to Cats</a>
 </body>
 </html>

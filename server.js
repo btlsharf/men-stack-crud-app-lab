@@ -41,17 +41,15 @@ app.post('/cats', async (req,res) => {
 })
 
 //GET index
-app.get('/cats', (req, res) => {
-  res.render('cats/index.ejs');
-})
+app.get('/cats', async (req, res) => {
+  const allCats = await Cat.find();
+  res.render('cats/index.ejs', {cats: allCats} );
+});
 
 //GET show one
-app.get('/cats/:catId', (req, res) => {
-  res.render('cats/show.ejs');
-})
+app.get('/cats/:catId', async (req, res) => {
+  const foundCat = await Cat.findById(req.params.catId);
+  res.render('cats/show.ejs', { cat: foundCat});
+});
 
 //Get Edit
-
-
-
-
