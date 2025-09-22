@@ -13,6 +13,10 @@
     <%} else { %>
         <p>it is a bit ugly in a good way</p>
     <% } %>
+    <form action="/cats/<%=cat._id%>?_method=DELETE" method="POST">
+        <button type="submit">Delete <%= cat.name %></button>
+    </form>
+    <a href="/cats/<%= cat._id %>/edit">Edit <%= cat.name %></a>
     <a href="/cats/">Back to Cats</a>
 </body>
 </html>

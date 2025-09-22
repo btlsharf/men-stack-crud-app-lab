@@ -5,9 +5,12 @@ const app = express();
 const mongoose = require('mongoose');
 const dotenv = require("dotenv");
 const Cat = require("./models/cat");
+const methodOverride = require("method-override"); 
 
 //Middleware
 app.use(express.urlencoded({ extended: false }));
+app.use(methodOverride("_method"));
+app.use(morgan("dev"));
 
 //DB connection
 dotenv.config(); // Loads the environment variables from .env file
@@ -52,4 +55,31 @@ app.get('/cats/:catId', async (req, res) => {
   res.render('cats/show.ejs', { cat: foundCat});
 });
 
+
+
 //Get Edit
+app.get("/cats/:catId/edit", async (req, res) => {
+  const foundCat = await Cat.findById(req.params.catId);
+  res.render("cats/edit.ejs", {
+    cat: foundCat,
+  });
+});
+
+// Put edit
+app.put("/cats/:fruitId", async (req, res) => {
+  if (req.body.isCute === ' on'){
+      req.body.isCute = true;
+    } else {
+      req.body.isCute = false;
+    }
+  
+  await Fruit.findByIdAndUpdate(req.params.catId, req.body);
+
+  res.redirect(`/cats/${req.params.catId}`);
+});
+
+//delete
+app.delete("/cats/:catId", async (req, res) => {
+  await Cat.findByIdAndDelete(req.params.catId);
+  res.redirect("/cats");
+});

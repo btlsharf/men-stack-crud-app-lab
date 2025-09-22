@@ -7,5 +7,25 @@
 </head>
 <body>
     <h1>Edit Cat</h1>
+    <form action="/cats" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" value="<%= cat.name %>">
+
+    <label for="breed">Cat Breed:</label>
+    <input type="text" name="breed" id="breed" value="<%= cat.breed %>">
+
+    <label for="meow">Meow:</label>
+    <input type="text" name="meow" id="meow" value="<%= cat.meow %>">
+
+    <label for="age">Age:</label>
+    <input type="number" name="age" id="age" value="<%= cat.age %>">
+
+    <div class="checkbox-div">
+    <label for="isCute">Is this cat cute?</label>
+    <input type="checkbox" name="isCute" id="isCute" <% if (cat.isCute) { %>checked<% } %>>
+    </div>
+    
+    <button type="submit">Update Cat</button>
+    </form>
 </body>
 </html>
